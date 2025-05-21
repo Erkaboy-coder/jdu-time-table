@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Yangi Dars Qo‘shish</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Fan:</label>
+                            {{ form.subject|add_class:"form-select" }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">O‘qituvchi:</label>
+                            {{ form.teacher|add_class:"form-select" }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Guruhlar:</label>
+                            {{ form.groups|add_class:"form-select" }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Talabalar:</label>
+                            {{ form.students }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Xona:</label>
+                            {{ form.room|add_class:"form-control" }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Boshlanish vaqti:</label>
+                            {{ form.start_time|add_class:"form-control" }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tugash vaqti:</label>
+                            {{ form.end_time|add_class:"form-control" }}
+                        </div>
+
+                        <div class="form-check mb-3">
+                            {{ form.is_canceled }}
+                            <label class="form-check-label">Bekor qilinganmi?</label>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Saqlash</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

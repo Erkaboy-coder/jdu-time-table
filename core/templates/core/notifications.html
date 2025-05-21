@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% block content %}
+<h2>Bildirishnomalar</h2>
+{% if notifications %}
+    <ul>
+    {% for notif in notifications %}
+        <li>
+            {{ notif.message }} — <small>{{ notif.created_at|date:"Y-m-d H:i" }}</small>
+            [<a href="{% url 'mark_notification_read' notif.pk %}">O‘qilgan deb belgilash</a>]
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Yangi bildirishnoma yo‘q.</p>
+{% endif %}
+{% endblock %}
